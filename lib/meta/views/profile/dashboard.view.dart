@@ -20,7 +20,7 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Hello."),
+          title: Text("Ass."),
         ),
         body: FutureBuilder<String?>(
             future: id,
