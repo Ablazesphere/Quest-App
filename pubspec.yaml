@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   supabase_auth_ui: ^0.0.1-dev.4
   provider: ^6.0.4
+  file_picker: ^5.2.2
+  image_picker: ^0.8.6
   
 
 dev_dependencies:

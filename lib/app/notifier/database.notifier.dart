@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:quest_server/core/service/database.service.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
@@ -13,8 +16,12 @@ class DatabaseNotifier extends ChangeNotifier {
       {required String id,
       required String email,
       required String phone}) async {
-    await Supabase.instance.client
-        .from("Users")
-        .insert({"id": id, "email": email, "phone": phone});
+    await Supabase.instance.client.from("Users").insert(
+      {
+        "id": id,
+        "email": email,
+        "phone": phone,
+      },
+    );
   }
 }

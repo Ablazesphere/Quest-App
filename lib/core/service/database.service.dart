@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class DatabaseService {
