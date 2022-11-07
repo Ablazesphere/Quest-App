@@ -45,34 +45,32 @@ class _ProfileViewState extends State<ProfileView> {
               SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () async {
+                  setState(() {
+                    _uploadState = false;
+                  });
                   final XFile? image = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
-                  await Supabase.instance.client.storage
-                      .from("public-image")
-                      .upload("${await id}/${image!.name}", File(image.path))
-                      .then((value) {
-                    setState(() {
-                      _uploadState = true;
-                    });
+                      .pickImage(source: ImageSource.gallery, imageQuality: 50);
+
+                  try {
+                    await Supabase.instance.client.storage
+                        .from("public-image")
+                        .upload("${await id}/${image!.name}", File(image.path));
                     var snackBarSucess = const SnackBar(
                       content: Text(
                         "Uploaded",
                       ),
                       backgroundColor: Colors.green,
                     );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBarSucess);
+                  } catch (e) {
                     var snackBarFail = const SnackBar(
                       content: Text(
-                        "Uploaded",
+                        "Upload failed",
                       ),
-                      backgroundColor: Colors.green,
+                      backgroundColor: Colors.red,
                     );
-                    if (_uploadState = true) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(snackBarSucess);
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(snackBarFail);
-                    }
-                  });
+                    ScaffoldMessenger.of(context).showSnackBar(snackBarFail);
+                  }
                 },
                 child: const Text("Select photos"),
               ),
