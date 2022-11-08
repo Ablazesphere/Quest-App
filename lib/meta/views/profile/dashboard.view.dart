@@ -42,7 +42,7 @@ class _ProfileViewState extends State<ProfileView> {
                       return Text('error');
                     }
                   }),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () async {
                   setState(() {
@@ -62,7 +62,14 @@ class _ProfileViewState extends State<ProfileView> {
                       backgroundColor: Colors.green,
                     );
                     ScaffoldMessenger.of(context).showSnackBar(snackBarSucess);
+                    final url = Future.delayed(Duration(seconds: 3)).then(
+                        (value) async => await Supabase.instance.client.storage
+                            .from("public-image")
+                            .createSignedUrl("$id/${image.name}", 120));
+                    print(image.name);
+                    print(id);
                   } catch (e) {
+                    print(e);
                     var snackBarFail = const SnackBar(
                       content: Text(
                         "Upload failed",
@@ -72,7 +79,29 @@ class _ProfileViewState extends State<ProfileView> {
                     ScaffoldMessenger.of(context).showSnackBar(snackBarFail);
                   }
                 },
-                child: const Text("Select photos"),
+                child: const Text("Select photos from gallery"),
+              ),
+              const SizedBox(height: 16),
+              const Divider(
+                thickness: 1,
+                indent: 10,
+                endIndent: 10,
+                color: Colors.white,
+                height: 5,
+              ),
+              const SizedBox(height: 16),
+              Card(
+                semanticContainer: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Image.network(
+                  'https://picsum.photos/250?image=9',
+                  fit: BoxFit.fill,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                elevation: 5,
+                margin: EdgeInsets.all(10),
               ),
             ],
           ),

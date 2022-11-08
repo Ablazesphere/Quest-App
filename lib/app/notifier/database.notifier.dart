@@ -15,12 +15,10 @@ class DatabaseNotifier extends ChangeNotifier {
       {required String id,
       required String email,
       required String phone}) async {
-    await Supabase.instance.client.from("Users").insert(
-      {
-        "id": id,
-        "email": email,
-        "phone": phone,
-      },
+    await _databaseService.addInfo(
+      id: id,
+      email: email,
+      phone: phone,
     );
   }
 }

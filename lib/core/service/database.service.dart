@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class DatabaseService {
@@ -24,5 +25,11 @@ class DatabaseService {
         "phone": phone,
       },
     );
+  }
+
+  Future<String?> getURL({required String id, required String filename}) async {
+    await Supabase.instance.client.storage
+        .from("public-image")
+        .createSignedUrl("$id/$filename", 120);
   }
 }
