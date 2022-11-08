@@ -1,5 +1,5 @@
 import 'dart:io';
-
+//hlmaoaoaoaososdoaosdoasodasodoassaod
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quest_server/core/service/database.service.dart';
@@ -62,10 +62,7 @@ class _ProfileViewState extends State<ProfileView> {
                       backgroundColor: Colors.green,
                     );
                     ScaffoldMessenger.of(context).showSnackBar(snackBarSucess);
-                    final url = Future.delayed(Duration(seconds: 3)).then(
-                        (value) async => await Supabase.instance.client.storage
-                            .from("public-image")
-                            .createSignedUrl("$id/${image.name}", 120));
+                    final url = DatabaseService().getURL(filename: image.name);
                     print(image.name);
                     print(id);
                   } catch (e) {

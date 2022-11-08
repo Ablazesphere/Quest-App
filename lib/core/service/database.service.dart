@@ -27,9 +27,9 @@ class DatabaseService {
     );
   }
 
-  Future<String?> getURL({required String id, required String filename}) async {
+  Future<String?> getURL({required String filename}) async {
     await Supabase.instance.client.storage
         .from("public-image")
-        .createSignedUrl("$id/$filename", 120);
+        .createSignedUrl("${user!.id}/$filename", 120);
   }
 }
