@@ -28,8 +28,16 @@ class DatabaseService {
   }
 
   Future<String?> getURL({required String filename}) async {
-    await Supabase.instance.client.storage
+    final response = await Supabase.instance.client.storage
         .from("public-image")
         .createSignedUrl("${user!.id}/$filename", 120);
+    return response;
+  }
+
+  Future<List?> getURLs() async {
+    final path = await Supabase.instance.client.storage
+        .from("public-image")
+        .list(path: "${user!.id}");
+    return path;
   }
 }

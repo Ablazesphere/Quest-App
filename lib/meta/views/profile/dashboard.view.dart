@@ -1,5 +1,5 @@
 import 'dart:io';
-//hlmaoaoaoaososdoaosdoasodasodoassaod
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quest_server/core/service/database.service.dart';
@@ -12,10 +12,12 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
   bool _uploadState = false;
+  late Future<List?> urls;
   late Future<String?> id;
   @override
   void initState() {
     id = DatabaseService().fetchId();
+    urls = DatabaseService().getURLs();
     super.initState();
   }
 
@@ -62,9 +64,10 @@ class _ProfileViewState extends State<ProfileView> {
                       backgroundColor: Colors.green,
                     );
                     ScaffoldMessenger.of(context).showSnackBar(snackBarSucess);
-                    final url = DatabaseService().getURL(filename: image.name);
-                    print(image.name);
-                    print(id);
+                    final url =
+                        await DatabaseService().getURL(filename: image.name);
+                    final urls = await DatabaseService().getURLs();
+                    print(urls);
                   } catch (e) {
                     print(e);
                     var snackBarFail = const SnackBar(
@@ -100,6 +103,15 @@ class _ProfileViewState extends State<ProfileView> {
                 elevation: 5,
                 margin: EdgeInsets.all(10),
               ),
+              FutureBuilder<List?>(
+                  future: urls,
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasError && snapshot.hasData) {
+                      return Text("Success");
+                    } else {
+                      return Text('error');
+                    }
+                  }),
             ],
           ),
         ));
