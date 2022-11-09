@@ -35,9 +35,15 @@ class DatabaseService {
   }
 
   Future<List?> getURLs() async {
-    final path = await Supabase.instance.client.storage
+    final List<FileObject> path = await Supabase.instance.client.storage
         .from("public-image")
-        .list(path: "${user!.id}");
-    return path;
+        .list(path: user!.id);
+    final List<String> fpath =
+        path.map((e) => '${user!.id}/${e.name}').toList();
+    final signedUrls = await Supabase.instance.client.storage
+        .from("public-image")
+        .createSignedUrls(fpath, 120);
+    print(signedUrls);
+    return signedUrls;
   }
 }

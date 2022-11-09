@@ -11,7 +11,6 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  bool _uploadState = false;
   late Future<List?> urls;
   late Future<String?> id;
   @override
@@ -24,9 +23,9 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Profile"),
+          title: const Text("Profile"),
         ),
-        body: Container(
+        body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -38,21 +37,17 @@ class _ProfileViewState extends State<ProfileView> {
                     if (!snapshot.hasError && snapshot.hasData) {
                       return Text(
                         "UID : ${snapshot.data!}",
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       );
                     } else {
-                      return Text('error');
+                      return const Text('error');
                     }
                   }),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () async {
-                  setState(() {
-                    _uploadState = false;
-                  });
                   final XFile? image = await ImagePicker()
                       .pickImage(source: ImageSource.gallery, imageQuality: 50);
-
                   try {
                     await Supabase.instance.client.storage
                         .from("public-image")
@@ -64,10 +59,6 @@ class _ProfileViewState extends State<ProfileView> {
                       backgroundColor: Colors.green,
                     );
                     ScaffoldMessenger.of(context).showSnackBar(snackBarSucess);
-                    final url =
-                        await DatabaseService().getURL(filename: image.name);
-                    final urls = await DatabaseService().getURLs();
-                    print(urls);
                   } catch (e) {
                     print(e);
                     var snackBarFail = const SnackBar(
@@ -90,26 +81,33 @@ class _ProfileViewState extends State<ProfileView> {
                 height: 5,
               ),
               const SizedBox(height: 16),
-              Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Image.network(
-                  'https://picsum.photos/250?image=9',
-                  fit: BoxFit.fill,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                elevation: 5,
-                margin: EdgeInsets.all(10),
-              ),
               FutureBuilder<List?>(
                   future: urls,
                   builder: (context, snapshot) {
                     if (!snapshot.hasError && snapshot.hasData) {
-                      return Text("Success");
+                      return SizedBox(
+                        height: 500,
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Card(
+                                semanticContainer: true,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                elevation: 5,
+                                margin: EdgeInsets.all(10),
+                                child: Image.network(
+                                  '${snapshot.data![index]}',
+                                  fit: BoxFit.fill,
+                                ),
+                              );
+                            }),
+                      );
                     } else {
-                      return Text('error');
+                      return const Text('error');
                     }
                   }),
             ],
