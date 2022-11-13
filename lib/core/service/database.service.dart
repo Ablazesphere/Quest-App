@@ -1,4 +1,3 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class DatabaseService {
@@ -27,11 +26,12 @@ class DatabaseService {
     );
   }
 
-  Future<String?> getURL({required String filename}) async {
-    final response = await Supabase.instance.client.storage
-        .from("public-image")
-        .createSignedUrl("${user!.id}/$filename", 120);
-    return response;
+  Future<String?> getAvatar() async {
+    final String avatar = await Supabase.instance.client.storage
+        .from("avatar")
+        .createSignedUrl("${user!.id}/${user!.id}.jpg", 120);
+    print(avatar);
+    return avatar;
   }
 
   Future<List?> getURLs() async {
@@ -43,7 +43,7 @@ class DatabaseService {
     final signedUrls = await Supabase.instance.client.storage
         .from("public-image")
         .createSignedUrls(fpath, 120);
-    print(signedUrls);
+    // print(signedUrls);
     return signedUrls;
   }
 }

@@ -1,9 +1,14 @@
 import 'dart:io';
 
+import 'package:avatar_glow/avatar_glow.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quest_server/core/service/database.service.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
+
+import '../../../core/service/app.service.dart';
+import '../../../core/service/database.service.dart';
 
 class ProfileView extends StatefulWidget {
   @override
@@ -13,10 +18,13 @@ class ProfileView extends StatefulWidget {
 class _ProfileViewState extends State<ProfileView> {
   late Future<List?> urls;
   late Future<String?> id;
+  late Future<String?> avatar;
+
   @override
   void initState() {
     id = DatabaseService().fetchId();
     urls = DatabaseService().getURLs();
+    avatar = DatabaseService().getAvatar();
     super.initState();
   }
 
@@ -31,6 +39,48 @@ class _ProfileViewState extends State<ProfileView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              AvatarGlow(
+                glowColor: Colors.grey,
+                endRadius: 100,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    AppService().showSelectPhotoOptions(context);
+                  },
+                  child: Container(
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    height: 150.0,
+                    width: 150.0,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.black,
+                    ),
+                    child: FutureBuilder<String?>(
+                      future: avatar,
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasError && snapshot.hasData) {
+                          return Center(
+                            child: Image.network(
+                              "${snapshot.data}",
+                              fit: BoxFit.cover,
+                              height: 150,
+                              width: 150,
+                            ),
+                          );
+                        }
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const CupertinoActivityIndicator();
+                        } else {
+                          return const Center(
+                              child: Icon(Icons.account_circle, size: 150));
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 23),
               FutureBuilder<String?>(
                   future: id,
                   builder: (context, snapshot) {
@@ -39,8 +89,11 @@ class _ProfileViewState extends State<ProfileView> {
                         "UID : ${snapshot.data!}",
                         style: const TextStyle(fontSize: 15),
                       );
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CupertinoActivityIndicator();
                     } else {
-                      return const Text('error');
+                      return const Text("Check your internet connection.");
                     }
                   }),
               const SizedBox(height: 16),
@@ -70,7 +123,7 @@ class _ProfileViewState extends State<ProfileView> {
                     ScaffoldMessenger.of(context).showSnackBar(snackBarFail);
                   }
                 },
-                child: const Text("Select photos from gallery"),
+                child: const Text("Upload Photos"),
               ),
               const SizedBox(height: 16),
               const Divider(
@@ -80,34 +133,46 @@ class _ProfileViewState extends State<ProfileView> {
                 color: Colors.white,
                 height: 5,
               ),
-              const SizedBox(height: 16),
               FutureBuilder<List?>(
                   future: urls,
                   builder: (context, snapshot) {
                     if (!snapshot.hasError && snapshot.hasData) {
                       return SizedBox(
-                        height: 500,
-                        child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            itemCount: snapshot.data!.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Card(
-                                semanticContainer: true,
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                elevation: 5,
-                                margin: EdgeInsets.all(10),
-                                child: Image.network(
-                                  '${snapshot.data![index]}',
-                                  fit: BoxFit.fill,
-                                ),
-                              );
-                            }),
+                        height: 400,
+                        child: LiquidPullToRefresh(
+                            onRefresh: () async {
+                              final avatar_results =
+                                  DatabaseService().getAvatar();
+                              final image_results = DatabaseService().getURLs();
+                              setState(() {
+                                avatar = Future.value(avatar_results);
+                                urls = Future.value(image_results);
+                              });
+                            },
+                            showChildOpacityTransition: false,
+                            animSpeedFactor: 4,
+                            color: Colors.blue,
+                            child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Card(
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    elevation: 5,
+                                    margin: EdgeInsets.all(10),
+                                    child: Image.network(
+                                      '${snapshot.data![index]}',
+                                      fit: BoxFit.fill,
+                                    ),
+                                  );
+                                })),
                       );
                     } else {
-                      return const Text('error');
+                      return Text("");
                     }
                   }),
             ],

@@ -38,6 +38,9 @@ dependencies:
   provider: ^6.0.4
   file_picker: ^5.2.2
   image_picker: ^0.8.6
+  liquid_pull_to_refresh: ^3.0.1
+  image_cropper: ^3.0.1
+  avatar_glow: ^2.0.2
   
 
 dev_dependencies:

@@ -23,11 +23,11 @@ class Core extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Lava();
+    return Quest();
   }
 }
 
-class Lava extends StatelessWidget {
+class Quest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
