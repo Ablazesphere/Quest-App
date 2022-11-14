@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -70,10 +69,14 @@ class _ProfileViewState extends State<ProfileView> {
                         }
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
-                          return const CupertinoActivityIndicator();
+                          return const CircularProgressIndicator();
                         } else {
                           return const Center(
-                              child: Icon(Icons.account_circle, size: 150));
+                              child: Icon(
+                            Icons.account_circle,
+                            size: 150,
+                            color: Colors.lightBlue,
+                          ));
                         }
                       },
                     ),
@@ -91,7 +94,7 @@ class _ProfileViewState extends State<ProfileView> {
                       );
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const CupertinoActivityIndicator();
+                      return const CircularProgressIndicator();
                     } else {
                       return const Text("Check your internet connection.");
                     }
@@ -156,17 +159,22 @@ class _ProfileViewState extends State<ProfileView> {
                                 scrollDirection: Axis.vertical,
                                 itemCount: snapshot.data!.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  return Card(
-                                    semanticContainer: true,
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    elevation: 5,
-                                    margin: EdgeInsets.all(10),
-                                    child: Image.network(
-                                      '${snapshot.data![index]}',
-                                      fit: BoxFit.fill,
+                                  return Container(
+                                    height: 300,
+                                    width: 300,
+                                    child: Card(
+                                      semanticContainer: true,
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      elevation: 5,
+                                      margin: EdgeInsets.all(10),
+                                      child: Image.network(
+                                        'https://zomfoszsstzqszqfyoie.supabase.co/storage/v1${snapshot.data![index].signedUrl}',
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
                                   );
                                 })),

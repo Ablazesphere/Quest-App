@@ -34,7 +34,7 @@ class DatabaseService {
     return avatar;
   }
 
-  Future<List?> getURLs() async {
+  Future<List> getURLs() async {
     final List<FileObject> path = await Supabase.instance.client.storage
         .from("public-image")
         .list(path: user!.id);
