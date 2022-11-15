@@ -32,12 +32,51 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Profile"),
+          actions: [
+            Container(
+                padding: EdgeInsets.only(right: 20),
+                child: GestureDetector(
+                  onTap: () async {
+                    final XFile? image = await ImagePicker().pickImage(
+                        source: ImageSource.gallery,
+                        maxHeight: 250,
+                        maxWidth: 250);
+                    try {
+                      await Supabase.instance.client.storage
+                          .from("public-image")
+                          .upload(
+                              "${await id}/${image!.name}", File(image.path));
+                      var snackBarSucess = const SnackBar(
+                        content: Text(
+                          "Uploaded",
+                        ),
+                        backgroundColor: Colors.green,
+                      );
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(snackBarSucess);
+                    } catch (e) {
+                      print(e);
+                      var snackBarFail = const SnackBar(
+                        content: Text(
+                          "Upload failed",
+                        ),
+                        backgroundColor: Colors.red,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBarFail);
+                    }
+                  },
+                  child: Icon(
+                    Icons.add_photo_alternate_rounded,
+                    size: 30,
+                  ),
+                ))
+          ],
         ),
         body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AvatarGlow(
                 glowColor: Colors.grey,
@@ -101,34 +140,6 @@ class _ProfileViewState extends State<ProfileView> {
                     }
                   }),
               const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () async {
-                  final XFile? image = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery, imageQuality: 50);
-                  try {
-                    await Supabase.instance.client.storage
-                        .from("public-image")
-                        .upload("${await id}/${image!.name}", File(image.path));
-                    var snackBarSucess = const SnackBar(
-                      content: Text(
-                        "Uploaded",
-                      ),
-                      backgroundColor: Colors.green,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBarSucess);
-                  } catch (e) {
-                    print(e);
-                    var snackBarFail = const SnackBar(
-                      content: Text(
-                        "Upload failed",
-                      ),
-                      backgroundColor: Colors.red,
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(snackBarFail);
-                  }
-                },
-                child: const Text("Upload Photos"),
-              ),
               const SizedBox(height: 16),
               const Divider(
                 thickness: 1,
@@ -136,6 +147,16 @@ class _ProfileViewState extends State<ProfileView> {
                 endIndent: 10,
                 color: Colors.white,
                 height: 5,
+              ),
+              Container(
+                padding: const EdgeInsets.all(15),
+                child: const Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Posts",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
               FutureBuilder<List?>(
                   future: urls,
@@ -157,7 +178,7 @@ class _ProfileViewState extends State<ProfileView> {
                             itemCount: snapshot.data!.length,
                             itemBuilder: (BuildContext context, int index) {
                               return Container(
-                                height: 300,
+                                height: 250,
                                 child: Card(
                                   semanticContainer: true,
                                   clipBehavior: Clip.antiAliasWithSaveLayer,
