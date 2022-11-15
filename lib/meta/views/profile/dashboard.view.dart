@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
@@ -59,8 +60,8 @@ class _ProfileViewState extends State<ProfileView> {
                       builder: (context, snapshot) {
                         if (!snapshot.hasError && snapshot.hasData) {
                           return Center(
-                            child: Image.network(
-                              "${snapshot.data}",
+                            child: CachedNetworkImage(
+                              imageUrl: "${snapshot.data}",
                               fit: BoxFit.cover,
                               height: 150,
                               width: 150,
@@ -140,45 +141,40 @@ class _ProfileViewState extends State<ProfileView> {
                   future: urls,
                   builder: (context, snapshot) {
                     if (!snapshot.hasError && snapshot.hasData) {
-                      return SizedBox(
-                        height: 400,
-                        child: LiquidPullToRefresh(
-                            onRefresh: () async {
-                              final avatar_results =
-                                  DatabaseService().getAvatar();
-                              final image_results = DatabaseService().getURLs();
-                              setState(() {
-                                avatar = Future.value(avatar_results);
-                                urls = Future.value(image_results);
-                              });
-                            },
-                            showChildOpacityTransition: false,
-                            animSpeedFactor: 4,
-                            color: Colors.blue,
-                            child: ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                itemCount: snapshot.data!.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Container(
-                                    height: 300,
-                                    width: 300,
-                                    child: Card(
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                      ),
-                                      elevation: 5,
-                                      margin: EdgeInsets.all(10),
-                                      child: Image.network(
+                      return Expanded(
+                          child: RefreshIndicator(
+                        onRefresh: () async {
+                          final avatar_results = DatabaseService().getAvatar();
+                          final image_results = DatabaseService().getURLs();
+                          setState(() {
+                            avatar = Future.value(avatar_results);
+                            urls = Future.value(image_results);
+                          });
+                        },
+                        color: Colors.blue,
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Container(
+                                height: 300,
+                                child: Card(
+                                  semanticContainer: true,
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  elevation: 5,
+                                  margin: EdgeInsets.all(10),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
                                         'https://zomfoszsstzqszqfyoie.supabase.co/storage/v1${snapshot.data![index].signedUrl}',
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  );
-                                })),
-                      );
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              );
+                            }),
+                      ));
                     } else {
                       return Text("");
                     }
