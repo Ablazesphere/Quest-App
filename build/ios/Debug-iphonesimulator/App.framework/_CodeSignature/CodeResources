@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		HWGTgixw3hRe/Td28V/51yREZlA=
+		wLS1s0jEKXIWZ/RG/Qp00+PljXA=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,7 +18,15 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		qB7r1FdSqCVT5bH57hfP+oUCy5g=
+		CG/Fhis1xpXOj7fWpJyPHkKbKOw=
+		</data>
+		<key>flutter_assets/assets/QUEST-1.png</key>
+		<data>
+		ipLK5Nph4InVheMZ2B4gQ5SiQbE=
+		</data>
+		<key>flutter_assets/assets/add-profile-picture.json</key>
+		<data>
+		jq6mpVLT9T7H2T+9hIqO3wX+uyQ=
 		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
@@ -30,7 +38,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		+2kPn59m3/rXiay6Ut9KBbtblg4=
+		YCUFf7JvyLeasiQiBjNosksCf88=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -48,6 +56,10 @@
 		<data>
 		qCSzIeujm7QkMIhEZjtJuPn4xMA=
 		</data>
+		<key>flutter_assets/packages/wakelock_web/assets/no_sleep.js</key>
+		<data>
+		4X7PZ95hkgUE15GU2+5c1VKgHP0=
+		</data>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>
 		<data>
 		R0Yk/+4pi9kDoM0WjoWjIwIYdZ0=
@@ -63,7 +75,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Nf4MKSrvgh69eN7LpdiHt8ClTnRT++QEdKMm4vQOmT0=
+			gvm4H6jZt1sFA5K2h6LtjVVcFrGNf35EaPGbvUGdP14=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -77,7 +89,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			A8M19/Vc6EkjaLUygG0BDkEacQF5QdxzMxwq2NvQCio=
+			QNIHzxlzfVfi70J+magVy17KUjOPdnOMLoU/EwK3aJI=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/QUEST-1.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ND9RPhlGX5FBnmfzlOkqJElTX9sEFCl80X5yS887QS4=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/add-profile-picture.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4LjmX8ZF9UTV3aeXlaXNVEBsqtiKhVDvYT0J02brDdA=
 			</data>
 		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
@@ -98,7 +124,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jN0SuJHdBa9X+E7zMPw4U3whuZOQrWZ7oMvKb1chCM0=
+			d4yUf02VSXQzHZG71NmKlU5F76RN/rr+OBeF//hv7iI=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -127,6 +153,13 @@
 			<key>hash2</key>
 			<data>
 			+daTPQTFmkKsowvYjuw4u5y+tpsVR/1VDvc+ugvOeho=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/wakelock_web/assets/no_sleep.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3OTu8LGXtkCtaqqyIo7h7n3M+L1ta13lSE3RvRZDCng=
 			</data>
 		</dict>
 		<key>flutter_assets/shaders/ink_sparkle.frag</key>

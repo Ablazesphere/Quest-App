@@ -88,7 +88,7 @@ class SelectPhotoOptionsScreen extends StatelessWidget {
                 final id = await DatabaseService()
                     .fetchId(); // try removing the await if it works
                 final File image =
-                    await AppService().pickImage(ImageSource.gallery) as File;
+                    await AppService().pickImage(ImageSource.camera) as File;
                 await Supabase.instance.client.storage
                     .from("avatar")
                     .remove(["$id/$id.jpg"]);

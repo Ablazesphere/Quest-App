@@ -43,7 +43,6 @@ class DatabaseService {
     final signedUrls = await Supabase.instance.client.storage
         .from("public-image")
         .createSignedUrls(fpath, 120);
-    // print(signedUrls);
     return signedUrls;
   }
 }

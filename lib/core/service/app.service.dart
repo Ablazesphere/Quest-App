@@ -38,8 +38,9 @@ class AppService {
   }
 
   Future<File?> cropImage({required File imageFile}) async {
-    CroppedFile? croppedImage = await ImageCropper()
-        .cropImage(sourcePath: imageFile.path, maxHeight: 150, maxWidth: 150);
+    CroppedFile? croppedImage = await ImageCropper().cropImage(
+      sourcePath: imageFile.path,
+    );
     return File(croppedImage!.path);
   }
 }
