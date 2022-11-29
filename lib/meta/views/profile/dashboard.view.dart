@@ -1,14 +1,12 @@
-import 'dart:io';
-
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
+import 'package:quest_server/app/routes/app.routes.dart';
+import 'package:quest_server/app/widgets/shimmer_widget.dart';
 import 'package:quest_server/app/widgets/video_widget.dart';
-import 'package:shimmer/shimmer.dart';
+import 'package:quest_server/meta/views/authentication/login.view.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
-import 'package:video_compress/video_compress.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../core/service/app.service.dart';
@@ -42,43 +40,16 @@ class _ProfileViewState extends State<ProfileView> {
                 padding: EdgeInsets.only(right: 20),
                 child: GestureDetector(
                   onTap: () async {
-                    final XFile? image = await ImagePicker().pickVideo(
-                      source: ImageSource.gallery,
-                      // maxHeight: 250,
-                      // maxWidth: 250,
+                    Navigator.of(context, rootNavigator: true).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => LoginView(),
+                      ),
                     );
-                    MediaInfo? mediaInfo = await VideoCompress.compressVideo(
-                      image!.path,
-                      quality: VideoQuality.DefaultQuality,
-                      deleteOrigin: false,
-                    );
-                    try {
-                      await Supabase.instance.client.storage
-                          .from("public-image")
-                          .upload("${await id}/${image.name.substring(5)}",
-                              File(mediaInfo!.path.toString()));
-                      var snackBarSucess = const SnackBar(
-                        content: Text(
-                          "Uploaded",
-                        ),
-                        backgroundColor: Colors.green,
-                      );
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(snackBarSucess);
-                      await VideoCompress.deleteAllCache();
-                    } catch (e) {
-                      print(e);
-                      var snackBarFail = const SnackBar(
-                        content: Text(
-                          "Upload failed",
-                        ),
-                        backgroundColor: Colors.red,
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBarFail);
-                    }
+
+                    await Supabase.instance.client.auth.signOut();
                   },
                   child: const Icon(
-                    Icons.add_photo_alternate_rounded,
+                    Icons.logout_rounded,
                     size: 30,
                   ),
                 ))
@@ -151,16 +122,11 @@ class _ProfileViewState extends State<ProfileView> {
                       );
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Shimmer.fromColors(
-                          child: Container(
-                            height: 20,
-                            width: 350,
-                            decoration: BoxDecoration(
-                                color: Colors.white30,
-                                borderRadius: BorderRadius.circular(5)),
-                          ),
-                          baseColor: Colors.grey[300]!,
-                          highlightColor: Colors.grey[400]!);
+                      return const ShimmerEffect(
+                        height: 20,
+                        width: 350,
+                        rounded: true,
+                      );
                     } else {
                       return const Text("Check your internet connection.");
                     }
@@ -191,13 +157,11 @@ class _ProfileViewState extends State<ProfileView> {
                       return Expanded(
                           child: RefreshIndicator(
                         onRefresh: () async {
-                          final avatar_results =
-                              await DatabaseService().getAvatar();
-                          final image_results =
-                              await DatabaseService().getURLs();
+                          final avatarResults = DatabaseService().getAvatar();
+                          final imageResults = DatabaseService().getURLs();
                           setState(() {
-                            avatar = Future.value(avatar_results);
-                            urls = Future.value(image_results);
+                            avatar = Future.value(avatarResults);
+                            urls = Future.value(imageResults);
                           });
                         },
                         color: Colors.blue,
@@ -215,7 +179,7 @@ class _ProfileViewState extends State<ProfileView> {
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   elevation: 5,
-                                  margin: EdgeInsets.all(10),
+                                  margin: const EdgeInsets.all(10),
                                   child:
                                       // CachedNetworkImage(
                                       //   imageUrl:
@@ -234,40 +198,21 @@ class _ProfileViewState extends State<ProfileView> {
                                       Column(
                                         children: [
                                           Container(
-                                            padding: EdgeInsets.all(15),
+                                            padding: const EdgeInsets.all(15),
                                             alignment: Alignment.topLeft,
                                             child: Column(
                                               //Convert this to widget later
-                                              children: [
-                                                Shimmer.fromColors(
-                                                    baseColor:
-                                                        Colors.grey[300]!,
-                                                    highlightColor:
-                                                        Colors.grey[400]!,
-                                                    child: Container(
-                                                      height: 20,
-                                                      width: 180,
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.white30,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5)),
-                                                    )),
-                                                const SizedBox(height: 10),
-                                                Shimmer.fromColors(
-                                                    baseColor:
-                                                        Colors.grey[300]!,
-                                                    highlightColor:
-                                                        Colors.grey[400]!,
-                                                    child: Container(
-                                                      height: 20,
-                                                      width: 180,
-                                                      decoration: BoxDecoration(
-                                                          color: Colors.white30,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5)),
-                                                    ))
+                                              children: const [
+                                                ShimmerEffect(
+                                                    height: 20,
+                                                    width: 180,
+                                                    rounded: true),
+                                                SizedBox(height: 10),
+                                                ShimmerEffect(
+                                                  height: 20,
+                                                  width: 180,
+                                                  rounded: true,
+                                                )
                                               ],
                                             ),
                                           ),
@@ -280,7 +225,7 @@ class _ProfileViewState extends State<ProfileView> {
                             }),
                       ));
                     } else {
-                      return Text("");
+                      return const Text("");
                     }
                   }),
             ],

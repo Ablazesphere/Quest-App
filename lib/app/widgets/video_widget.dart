@@ -1,5 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:quest_server/app/widgets/shimmer_widget.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:video_player/video_player.dart';
 
@@ -92,15 +93,8 @@ class _VideoWidgetState extends State<VideoWidget> {
             ),
           );
         } else {
-          return Center(
-            child: Shimmer.fromColors(
-                child: Container(
-                  height: 300,
-                  width: 160,
-                  color: Colors.white30,
-                ),
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[400]!),
+          return const Center(
+            child: ShimmerEffect(height: 300, width: 160, rounded: false),
           );
         }
       },
