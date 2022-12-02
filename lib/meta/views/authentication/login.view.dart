@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quest_server/app/routes/app.routes.dart';
 import 'package:quest_server/meta/views/navigation/navigation.view.dart';
-import 'package:quest_server/meta/views/profile/dashboard.view.dart';
+
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class LoginView extends StatefulWidget {
@@ -28,13 +28,6 @@ class _LoginViewState extends State<LoginView> {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (_) => Navbar(),
                 ));
-                // await Future.delayed(const Duration(seconds: 5), () {
-                //   Navigator.pushAndRemoveUntil(
-                //     context,
-                //     MaterialPageRoute(builder: (context) => ProfileView()),
-                //     (Route<dynamic> route) => false,
-                //   );
-                // });
               },
             ),
             TextButton(

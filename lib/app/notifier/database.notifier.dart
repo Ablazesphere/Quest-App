@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:quest_server/core/service/database.service.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';

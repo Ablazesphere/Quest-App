@@ -18,7 +18,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		LDAsF+5JnsWP70dcbrtNE8rXD/M=
+		1mFs9G3LKrx5yNzK2Lr8m5ASUUk=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		3excrNo2qiywjMeLnrukkSCCMXE=
+		/HVusdb249qe0W/UYRc0g4cwAwI=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		4L6oxJwOk3dffi2btpugiXaHnwc=
+		Bph5fCYZPtEqSERQzghbKenKs6Q=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		4Gm3Nz/2e/0CaIoWiKuuaz3Ulg8=
+		bed+bf7vErE8jCBSJDp38O4N58M=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -130,11 +130,11 @@
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController</key>
 		<data>
-		B4MkTbq3OFFR8RiF7qtZ2Djr2Fw=
+		s+hEwSHiqDWtOQ0SDoxj9RQWsKU=
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Assets.car</key>
 		<data>
-		tLIPwb1eAR+ERfDzVaRi6Q7Dhsk=
+		ROwg/LTZQVdlGdmMWZLX0Ky60U0=
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Base.lproj/DKImagePickerController.strings</key>
 		<dict>
@@ -326,15 +326,15 @@
 		</data>
 		<key>Frameworks/DKImagePickerController.framework/_CodeSignature/CodeResources</key>
 		<data>
-		A7v5DSPLI3aLtZFzvgyILUZFNbc=
+		82EZE3i0hwQFoeUU+1uhsKLpDug=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery</key>
 		<data>
-		rf6nzgKJrewMUFHS/6oXl4GUAsg=
+		o5SJs2YC/lMEbOCIE/Lt2TRQf2E=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Assets.car</key>
 		<data>
-		HASPv6yd54/8Vuph1m7Sf6mj+Ks=
+		OI7dkShaDYF9m1gdt7T8oNzkPtk=
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Base.lproj/DKPhotoGallery.strings</key>
 		<dict>
@@ -373,7 +373,7 @@
 		</data>
 		<key>Frameworks/DKPhotoGallery.framework/_CodeSignature/CodeResources</key>
 		<data>
-		2Kb0qcauRpxid4x8j8CH5Gsr7m0=
+		teGwn3Xbi+bfr+usOxtBKZQsfO0=
 		</data>
 		<key>Frameworks/FMDB.framework/FMDB</key>
 		<data>
@@ -842,7 +842,7 @@
 		</data>
 		<key>Frameworks/better_player.framework/better_player</key>
 		<data>
-		gSbd76eD+bbUp1VwoOg8UvJ2YRM=
+		nXkXBUEEFgRPc2gcdvrUd0NXA3w=
 		</data>
 		<key>Frameworks/file_picker.framework/Info.plist</key>
 		<data>
@@ -854,7 +854,7 @@
 		</data>
 		<key>Frameworks/file_picker.framework/file_picker</key>
 		<data>
-		rdgm9RMBCsXG/WHawqFcTur0/PE=
+		wL9u04cDfxu18w72Mpxe4RlH4As=
 		</data>
 		<key>Frameworks/image_cropper.framework/Info.plist</key>
 		<data>
@@ -866,7 +866,7 @@
 		</data>
 		<key>Frameworks/image_cropper.framework/image_cropper</key>
 		<data>
-		Jx27n3x3+JfOogzVZ7dSPe5/xew=
+		sIwDlIf/kg3K/mbinGUQM2Pk1Dg=
 		</data>
 		<key>Frameworks/image_picker_ios.framework/Info.plist</key>
 		<data>
@@ -902,7 +902,7 @@
 		</data>
 		<key>Frameworks/sqflite.framework/sqflite</key>
 		<data>
-		9EdvUC6CeINMKOpe7dKfEBuuEMc=
+		h3JiSHAZrBy6GJOLfNDjEHZfjq4=
 		</data>
 		<key>Frameworks/url_launcher_ios.framework/Info.plist</key>
 		<data>
@@ -954,7 +954,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		enWRYFUfo9y2ACkPo12cEcXRM/w=
+		C2SOf1u875tcBdyoCmWzboguyeM=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -988,7 +988,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JGGLvRnBDqYbtQ4KL0+Ds3v1IQ+0i0OiQoBwBT90938=
+			kFu3KiaK0F1Y/XsgiSuq/Va3afUYzYa1xXaJPcnDI9o=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
@@ -1037,7 +1037,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			S8sdJWtIq2MEser736EOgXXRCSOcOyJq3v+ay9abxQ4=
+			v6K2bpKzHvjBMemoixZmcROMRufW+UQtELnC6gz66Rw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -1051,7 +1051,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			cBmECBoGe4z8V/srV324dbUAQcCzfTUJOTZl9T/1U54=
+			VLJfiwpuwQOjuzDE3k9iJXwR5S8VudVgNt4WAH8YP7M=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
@@ -1107,7 +1107,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1PnugxZDUQEcEQxUVgLWynQ8KHrKkyvwwmPAOzNIhTM=
+			XsdvkZ9n8bBrS35u2Wf6oU4xyRmAZrdck/O7wrgfm2I=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -1184,14 +1184,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dSV50e1TwnFZtHjzSKAMeoqGzFr8icAoNNWnAP8qZts=
+			KpPJaaqPn1dcaowlee17HFBRwgS9GVv+7VX4Ao9iauc=
 			</data>
 		</dict>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Lk4zRVpiQJ48xkVqiwy0ECJ2aEUBA2K6cQ87rKUTEgw=
+			2A7GEkJARX0JwJU0a3yNllkEseTew8joaltGtB4p1BI=
 			</data>
 		</dict>
 		<key>Frameworks/DKImagePickerController.framework/DKImagePickerController.bundle/Base.lproj/DKImagePickerController.strings</key>
@@ -1392,21 +1392,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GG9QZdu57sl8RFLu3yYj3Gj4QfFENoLnwDJX5EWc0JA=
+			h9ZDIAh97H7pUG72shIqBinZCiKSjkVFwWojmSZvzgU=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FquJrmpC8H/YIwsANet683akR7KpvKL2rSqS8BYjlbw=
+			uBi/GHu/u86mqC5e5bSP9w9y9SiH1Ervf2g3+JnkaBk=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/62DgFRFX2Tzs3ENkoTwqF3XbZ3M06yerpXVtgLWuo4=
+			qCertnHH+LKmRMhN8BkGlHOOejdsc0OxvJrOxag/eik=
 			</data>
 		</dict>
 		<key>Frameworks/DKPhotoGallery.framework/DKPhotoGallery.bundle/Base.lproj/DKPhotoGallery.strings</key>
@@ -1454,7 +1454,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			v7FBU1wcCpL7ZZGd2jXgrMRfqWEBOdBZ8kth7D/IcWA=
+			BN4D7Q9cKROic4sY3c+y4sOo4uOtDp97I+Oygo/dRLI=
 			</data>
 		</dict>
 		<key>Frameworks/FMDB.framework/FMDB</key>
@@ -2079,7 +2079,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			N0GpJm9pZb+kjg4N5jO/UmnPhbCYfI7elyw6h4kxTrk=
+			dLM9zPt6ruIa36WrXLYEe1A6wDkAz4nI3KPaPa2VG00=
 			</data>
 		</dict>
 		<key>Frameworks/file_picker.framework/Info.plist</key>
@@ -2100,7 +2100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kv3qM/uot2ZGrYiXX1N0TOskOL0bnlIo1rwynh+sYGc=
+			3IEmZZpMHjAIOk2TJnNptp/zQ9UMurOA+VFx0j865bo=
 			</data>
 		</dict>
 		<key>Frameworks/image_cropper.framework/Info.plist</key>
@@ -2121,7 +2121,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			POsLF/u2cDaO0HCHcGiyO/FVN4mB4O2rGxOQ/VuxGeA=
+			MVt1XcS/aC9HiLsEUx0ewFZeFV06CVFboSIS+P2EIxY=
 			</data>
 		</dict>
 		<key>Frameworks/image_picker_ios.framework/Info.plist</key>
@@ -2184,7 +2184,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qSH/nj3AQ6Gms982kH06MMzpWHAffiB/gG8u1WNpMqE=
+			YDWlH5IeFWkeor0xnPRJpJN22xJBX+9HeFuebeArWrA=
 			</data>
 		</dict>
 		<key>Frameworks/url_launcher_ios.framework/Info.plist</key>

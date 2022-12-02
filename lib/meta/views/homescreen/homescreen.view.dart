@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quest_server/app/routes/hero_dialog.routes.dart';
+import 'package:quest_server/app/widgets/add_todo_button.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 import 'package:video_compress/video_compress.dart';
 
@@ -69,10 +71,24 @@ class _HomeViewState extends State<HomeView> {
                   Icons.add_photo_alternate_rounded,
                   size: 30,
                 ),
-              ))
+              )),
+          // Container(
+          //     padding: const EdgeInsets.only(right: 20), child: AddTodoButton())
         ],
       ),
-      body: Container(),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              child: AddTodoButton(),
+              alignment: Alignment.bottomRight,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

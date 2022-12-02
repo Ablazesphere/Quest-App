@@ -2,7 +2,6 @@ import 'package:avatar_glow/avatar_glow.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quest_server/app/routes/app.routes.dart';
 import 'package:quest_server/app/widgets/shimmer_widget.dart';
 import 'package:quest_server/app/widgets/video_widget.dart';
 import 'package:quest_server/meta/views/authentication/login.view.dart';
