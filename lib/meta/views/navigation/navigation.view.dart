@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:quest_server/meta/views/homescreen/homescreen.view.dart';
 import 'package:quest_server/meta/views/profile/dashboard.view.dart';
+import 'package:quest_server/meta/views/tasks/task.view.dart';
 
 class Navbar extends StatefulWidget {
   const Navbar({super.key});
@@ -28,6 +29,7 @@ class _NavbarState extends State<Navbar> {
   List<Widget> screens() {
     return [
       HomeView(),
+      TaskView(),
       ProfileView(),
     ];
   }
@@ -38,6 +40,11 @@ class _NavbarState extends State<Navbar> {
           icon: Icon(CupertinoIcons.home),
           title: "Home",
           activeColorPrimary: CupertinoColors.activeGreen,
+          inactiveColorPrimary: CupertinoColors.systemGrey),
+      PersistentBottomNavBarItem(
+          icon: Icon(CupertinoIcons.flag),
+          title: "Tasks",
+          activeColorPrimary: CupertinoColors.activeOrange,
           inactiveColorPrimary: CupertinoColors.systemGrey),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.profile_circled),

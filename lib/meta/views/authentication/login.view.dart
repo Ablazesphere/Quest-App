@@ -14,31 +14,39 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
-      body: Container(
-        padding: EdgeInsets.only(top: 16),
-        child: Column(
-          children: [
-            SupaEmailAuth(
-              authAction: SupaAuthAction.signIn,
-              onSuccess: (GotrueSessionResponse response) async {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (_) => Navbar(),
-                ));
-              },
+    return GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("Login"),
+          ),
+          body: Container(
+            padding: EdgeInsets.only(top: 16),
+            child: Column(
+              children: [
+                SupaEmailAuth(
+                  authAction: SupaAuthAction.signIn,
+                  onSuccess: (GotrueSessionResponse response) async {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (_) => Navbar(),
+                    ));
+                  },
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(AppRoutes.SignupRoute);
+                  },
+                  child: Text("Already have an account? Sign Up"),
+                )
+              ],
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.SignupRoute);
-              },
-              child: Text("Already have an account? Sign Up"),
-            )
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }

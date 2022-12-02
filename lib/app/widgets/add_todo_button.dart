@@ -69,69 +69,90 @@ class _AddTodoPopupCard extends StatelessWidget {
             return CustomRectTween(begin: begin!, end: end!);
           },
           child: Card(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
             color: Colors.blueGrey,
             elevation: 2,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: FractionallySizedBox(
-              // aspectRatio: 9 / 16,
-              heightFactor: 0.8,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.7,
+              width: MediaQuery.of(context).size.width * 0.9,
               child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      const TextField(
-                        decoration: InputDecoration(
-                          hintText: 'New todo',
-                          border: InputBorder.none,
-                        ),
-                        cursorColor: Colors.white,
-                      ),
-                      const Divider(
-                        color: Colors.white,
-                        thickness: 0.2,
-                      ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Write a note',
-                          border: InputBorder.none,
-                        ),
-                        cursorColor: Colors.white,
-                        maxLines: 6,
-                      ),
-                      const Divider(
-                        color: Colors.white,
-                        thickness: 0.2,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Add'),
-                      ),
                       SizedBox(
-                        height: 250,
-                      ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Write a note',
-                          border: InputBorder.none,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: GestureDetector(
+                            onTap: () {
+                              print("Add a video picker widget");
+                            },
+                            child: Container(
+                              color: Colors.grey[600],
+                              child: Column(
+                                children: const [
+                                  SizedBox(height: 50),
+                                  Icon(
+                                    Icons.video_file_rounded,
+                                    size: 56,
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    "Upload Video",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )),
+                      const Padding(
+                        padding: EdgeInsets.only(
+                            top: 15, bottom: 10, left: 10, right: 10),
+                        child: TextField(
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 22),
+                          decoration: InputDecoration(
+                              hintText: 'Click to add title',
+                              border: InputBorder.none,
+                              counterText: ""),
+                          cursorColor: Colors.white,
+                          maxLines: 2,
+                          maxLength: 80,
                         ),
-                        cursorColor: Colors.white,
-                        maxLines: 6,
                       ),
-                      const TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Write a note',
-                          border: InputBorder.none,
+                      const Divider(
+                        indent: 5,
+                        endIndent: 5,
+                        color: Colors.white,
+                        thickness: 0.2,
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(
+                            top: 15, bottom: 10, left: 10, right: 10),
+                        child: TextField(
+                          style: TextStyle(
+                              fontWeight: FontWeight.w300, fontSize: 14),
+                          decoration: InputDecoration(
+                              hintText: 'Click to add description',
+                              border: InputBorder.none,
+                              counterText: ""),
+                          cursorColor: Colors.white,
+                          maxLines: 14,
+                          maxLength: 800,
                         ),
-                        cursorColor: Colors.white,
-                        maxLines: 6,
                       ),
+                      const Divider(
+                        indent: 5,
+                        endIndent: 5,
+                        color: Colors.white,
+                        thickness: 0.2,
+                      ),
+                      const SizedBox(height: 100)
                     ],
-                  ),
-                ),
-              ),
+                  )),
             ),
           ),
         ),
