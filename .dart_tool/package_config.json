@@ -176,6 +176,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_animate",
+      "rootUri": "file:///Users/mshoaib/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_animate-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "flutter_blurhash",
       "rootUri": "file:///Users/mshoaib/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_blurhash-0.7.0",
       "packageUri": "lib/",
@@ -770,7 +776,7 @@
       "languageVersion": "2.17"
     }
   ],
-  "generated": "2022-11-29T11:52:53.862287Z",
+  "generated": "2022-12-02T15:49:19.952895Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

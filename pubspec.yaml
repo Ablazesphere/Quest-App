@@ -50,6 +50,7 @@ dependencies:
   video_compress: ^3.1.2
   lottie: ^2.0.0
   persistent_bottom_nav_bar_v2: ^4.2.6
+  flutter_animate: ^2.0.1
   
   
 

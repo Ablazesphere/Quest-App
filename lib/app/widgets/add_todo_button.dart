@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../custom_rect_tween.dart';
 import '../routes/hero_dialog.routes.dart';
@@ -78,6 +79,7 @@ class _AddTodoPopupCard extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.7,
               width: MediaQuery.of(context).size.width * 0.9,
               child: SingleChildScrollView(
+                  physics: ClampingScrollPhysics(),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   child: Column(
@@ -136,9 +138,9 @@ class _AddTodoPopupCard extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.w300, fontSize: 14),
                           decoration: InputDecoration(
-                              hintText: 'Click to add description',
-                              border: InputBorder.none,
-                              counterText: ""),
+                            hintText: 'Click to add description',
+                            border: InputBorder.none,
+                          ),
                           cursorColor: Colors.white,
                           maxLines: 14,
                           maxLength: 800,
@@ -150,7 +152,54 @@ class _AddTodoPopupCard extends StatelessWidget {
                         color: Colors.white,
                         thickness: 0.2,
                       ),
-                      const SizedBox(height: 100)
+                      const SizedBox(height: 30),
+                      GestureDetector(
+                        onTap: () {
+                          print("Upload script button pressed.");
+                        },
+                        child: Container(
+                            padding: EdgeInsets.only(left: 10),
+                            margin: EdgeInsets.only(right: 100),
+                            height: 50,
+                            child: Card(
+                              elevation: 5,
+                              child: Row(
+                                children: const [
+                                  Icon(
+                                    Icons.file_present_rounded,
+                                    size: 30,
+                                  ),
+                                  SizedBox(width: 5),
+                                  Text("Click to upload your script")
+                                ],
+                              ),
+                            )),
+                      ),
+                      const SizedBox(height: 30),
+                      GestureDetector(
+                        onTap: () {
+                          print("Submit button pressesd.");
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: 50,
+                          color: Colors.grey[800],
+                          child: Text(
+                            'Submit.',
+                            style: TextStyle(
+                                fontSize: 28, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          )
+                              .animate(
+                                onPlay: (controller) =>
+                                    controller.repeat(reverse: true),
+                              )
+                              .shimmer(
+                                  color: Colors.blue,
+                                  duration: Duration(seconds: 3)),
+                        ),
+                      )
                     ],
                   )),
             ),
