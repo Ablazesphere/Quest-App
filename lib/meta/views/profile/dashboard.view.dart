@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:quest_server/app/widgets/shimmer_widget.dart';
 import 'package:quest_server/app/widgets/video_widget.dart';
 import 'package:quest_server/meta/views/authentication/login.view.dart';
+import 'package:quest_server/meta/views/post/post.view.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 import 'package:video_player/video_player.dart';
 
@@ -168,58 +170,74 @@ class _ProfileViewState extends State<ProfileView> {
                             scrollDirection: Axis.vertical,
                             itemCount: snapshot.data!.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return SizedBox(
-                                height: 300,
-                                child: Card(
-                                  color: Colors.blueGrey,
-                                  semanticContainer: true,
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  elevation: 5,
-                                  margin: const EdgeInsets.all(10),
-                                  child:
-                                      // CachedNetworkImage(
-                                      //   imageUrl:
-                                      //       'https://zomfoszsstzqszqfyoie.supabase.co/storage/v1${snapshot.data![index].signedUrl}',
-                                      //   fit: BoxFit.fill,
-                                      // ),
+                              return OpenContainer(
+                                transitionDuration: const Duration(seconds: 1),
+                                closedElevation: 0,
+                                closedColor: Colors.grey[850]!,
+                                closedShape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0)),
+                                transitionType:
+                                    ContainerTransitionType.fadeThrough,
+                                closedBuilder: ((context, action) {
+                                  return SizedBox(
+                                    height: 300,
+                                    child: Card(
+                                      color: Colors.blueGrey,
+                                      semanticContainer: true,
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      elevation: 5,
+                                      margin: const EdgeInsets.all(10),
+                                      child:
+                                          // CachedNetworkImage(
+                                          //   imageUrl:
+                                          //       'https://zomfoszsstzqszqfyoie.supabase.co/storage/v1${snapshot.data![index].signedUrl}',
+                                          //   fit: BoxFit.fill,
+                                          // ),
 
-                                      Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      VideoWidget(
-                                          url:
-                                              'https://zomfoszsstzqszqfyoie.supabase.co/storage/v1${snapshot.data![index].signedUrl}',
-                                          play: true),
-                                      Column(
+                                          Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Container(
-                                            padding: const EdgeInsets.all(15),
-                                            alignment: Alignment.topLeft,
-                                            child: Column(
-                                              //Convert this to widget later
-                                              children: const [
-                                                ShimmerEffect(
-                                                    height: 20,
-                                                    width: 180,
-                                                    rounded: true),
-                                                SizedBox(height: 10),
-                                                ShimmerEffect(
-                                                  height: 20,
-                                                  width: 180,
-                                                  rounded: true,
-                                                )
-                                              ],
-                                            ),
+                                          VideoWidget(
+                                              url:
+                                                  'https://zomfoszsstzqszqfyoie.supabase.co/storage/v1${snapshot.data![index].signedUrl}',
+                                              play: true),
+                                          Column(
+                                            children: [
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(15),
+                                                alignment: Alignment.topLeft,
+                                                child: Column(
+                                                  //Convert this to widget later
+                                                  children: const [
+                                                    ShimmerEffect(
+                                                        height: 20,
+                                                        width: 180,
+                                                        rounded: true),
+                                                    SizedBox(height: 10),
+                                                    ShimmerEffect(
+                                                      height: 20,
+                                                      width: 180,
+                                                      rounded: true,
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
-                                    ],
-                                  ),
-                                ),
+                                    ),
+                                  );
+                                }),
+                                openBuilder: ((context, action) {
+                                  return const PostExpand();
+                                }),
                               );
                             }),
                       ));

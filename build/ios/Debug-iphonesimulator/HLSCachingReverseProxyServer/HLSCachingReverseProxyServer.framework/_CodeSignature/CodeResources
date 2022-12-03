@@ -18,11 +18,11 @@
 		</data>
 		<key>Modules/HLSCachingReverseProxyServer.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		qQBIRwY5mq52BQfzPwC49yML40w=
+		inrYfIpkRlUADRxwaygDI3jyNv0=
 		</data>
 		<key>Modules/HLSCachingReverseProxyServer.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		W8D2fXEAPUtXXDq9rgPuDKcRXWQ=
+		+eVQZCyeId+NtXQ5NgEnE4S3Wc0=
 		</data>
 		<key>Modules/HLSCachingReverseProxyServer.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -81,22 +81,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qQBIRwY5mq52BQfzPwC49yML40w=
+			inrYfIpkRlUADRxwaygDI3jyNv0=
 			</data>
 			<key>hash2</key>
 			<data>
-			84CupmxvlPdvnJr0fZ5UqN82et7r3LkVzXrLgQP81RM=
+			+WHbjD31JcLGEWCtl1o8yS5H27Uw93T6MS9wTbrC5dc=
 			</data>
 		</dict>
 		<key>Modules/HLSCachingReverseProxyServer.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			W8D2fXEAPUtXXDq9rgPuDKcRXWQ=
+			+eVQZCyeId+NtXQ5NgEnE4S3Wc0=
 			</data>
 			<key>hash2</key>
 			<data>
-			k4YFQCEjxz/EwHdNIyGdRrsOa71VHbwNVXkCu88e7QU=
+			79M7IHZQKEYN3+5EIQ3fG9B/YSXp0SCqYuBczianSuE=
 			</data>
 		</dict>
 		<key>Modules/HLSCachingReverseProxyServer.swiftmodule/arm64-apple-ios-simulator.abi.json</key>

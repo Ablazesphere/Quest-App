@@ -1,0 +1,6 @@
+framework module cached_video_player {
+  umbrella header "cached_video_player-umbrella.h"
+
+  export *
+  module * { export * }
+}
