@@ -1,6 +1,6 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:rive/rive.dart';
+import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class PostExpand extends StatefulWidget {
   const PostExpand({super.key});
@@ -9,49 +9,77 @@ class PostExpand extends StatefulWidget {
   State<PostExpand> createState() => _PostExpandState();
 }
 
-class _PostExpandState extends State<PostExpand> {
+class _PostExpandState extends State<PostExpand> with TickerProviderStateMixin {
+  StateMachineController? controller;
+  SMIInput<double>? inputValue;
+
   @override
+  void initState() {
+    super.initState();
+  }
+
+  void dispose() {
+    super.dispose();
+    controller?.dispose();
+  }
+
+  void _updateValueInDb(double newValue) async {
+    await Supabase.instance.client.from('posts').update({'stars': newValue}).eq(
+        "video", "A05CEE6A-56C3-404A-91F2-A6B14E3634A2.MOV");
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: PageTransitionSwitcher(
-          transitionBuilder: (child, primaryAnimation, secondaryAnimation) {
-            return SharedAxisTransition(
-                animation: primaryAnimation,
-                secondaryAnimation: secondaryAnimation,
-                transitionType: SharedAxisTransitionType.scaled,
-                child: child);
-          },
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
-              padding:
-                  EdgeInsets.only(top: 15, bottom: 10, left: 10, right: 10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 50,
-                    child: const Text(
-                      'PAGE NOT YET BUILT :/',
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.center,
-                    )
-                        .animate(
-                          onPlay: (controller) =>
-                              controller.repeat(reverse: true),
-                        )
-                        .shimmer(
-                            color: Colors.red, duration: Duration(seconds: 3)),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 15, bottom: 10, left: 10, right: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                height: 100,
+                child: InkWell(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  onTap: () {
+                    inputValue = controller?.findInput("Rating");
+                    int? newValue = inputValue?.value.toInt();
+                    _updateValueInDb(newValue!.toDouble());
+                  },
+                  child: RiveAnimation.asset(
+                    "assets/ratings.riv",
+                    onInit: (art) async {
+                      controller = StateMachineController.fromArtboard(
+                        art,
+                        "State Machine 1",
+                      );
+                      art.addController(controller!);
+                      inputValue = controller?.findInput("Rating");
+
+                      List result = await Supabase.instance.client
+                          .from("posts")
+                          .select("stars, user_id")
+                          .match({
+                        'user_id':
+                            '96649509-71a7-4ecf-82cf-9e22b6131558' // Later has to be assigned as a widget argument
+                      }).eq("video",
+                              "A05CEE6A-56C3-404A-91F2-A6B14E3634A2.MOV"); // Later has to be assigned as a widget argument
+                      print(result[0]["stars"]);
+
+                      int? value = result[0]["stars"];
+                      inputValue?.change(value!.toDouble());
+                    },
                   ),
-                ],
+                ),
               ),
-            ),
-          )),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

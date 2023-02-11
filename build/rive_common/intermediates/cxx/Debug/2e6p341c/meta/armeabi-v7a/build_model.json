@@ -1,0 +1,169 @@
+{
+  "abi": "ARMEABI_V7A",
+  "info": {
+    "abi": "ARMEABI_V7A",
+    "bitness": 32,
+    "deprecated": false,
+    "default": true
+  },
+  "cxxBuildFolder": "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\.cxx\\Debug\\2e6p341c\\armeabi-v7a",
+  "soFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cxx\\Debug\\2e6p341c\\obj\\armeabi-v7a",
+  "soRepublishFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cmake\\debug\\obj\\armeabi-v7a",
+  "abiPlatformVersion": 19,
+  "cmake": {
+    "effectiveConfiguration": {
+      "inheritEnvironments": [],
+      "variables": []
+    }
+  },
+  "variant": {
+    "buildSystemArgumentList": [],
+    "cFlagsList": [],
+    "cppFlagsList": [],
+    "variantName": "debug",
+    "soFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cxx\\Debug\\2e6p341c\\obj",
+    "soRepublishFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cmake\\debug\\obj",
+    "cxxBuildFolder": "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\.cxx\\Debug\\2e6p341c",
+    "intermediatesFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cxx\\Debug\\2e6p341c",
+    "isDebuggableEnabled": true,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": [],
+    "implicitBuildTargetSet": [],
+    "cmakeSettingsConfiguration": "android-gradle-plugin-predetermined-name",
+    "module": {
+      "cxxFolder": "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\.cxx",
+      "intermediatesBaseFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates",
+      "intermediatesFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cxx",
+      "gradleModulePathName": ":rive_common",
+      "moduleRootFolder": "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android",
+      "moduleBuildFile": "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\build.gradle",
+      "makeFile": "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "ndkFolder": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393",
+      "ndkVersion": "25.1.8937393",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultStl": "LIBCXX_STATIC",
+      "ndkMetaPlatforms": {
+        "min": 19,
+        "max": 33,
+        "aliases": {
+          "20": 19,
+          "25": 24,
+          "J": 16,
+          "J-MR1": 17,
+          "J-MR2": 18,
+          "K": 19,
+          "L": 21,
+          "L-MR1": 22,
+          "M": 23,
+          "N": 24,
+          "N-MR1": 24,
+          "O": 26,
+          "O-MR1": 27,
+          "P": 28,
+          "Q": 29,
+          "R": 30,
+          "S": 31,
+          "Sv2": 32,
+          "Tiramisu": 33
+        }
+      },
+      "ndkMetaAbiList": [
+        {
+          "abi": "ARMEABI_V7A",
+          "bitness": 32,
+          "deprecated": false,
+          "default": true
+        },
+        {
+          "abi": "ARM64_V8A",
+          "bitness": 64,
+          "deprecated": false,
+          "default": true
+        },
+        {
+          "abi": "X86",
+          "bitness": 32,
+          "deprecated": false,
+          "default": true
+        },
+        {
+          "abi": "X86_64",
+          "bitness": 64,
+          "deprecated": false,
+          "default": true
+        }
+      ],
+      "cmakeToolchainFile": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393\\build\\cmake\\android.toolchain.cmake",
+      "cmake": {
+        "isValidCmakeAvailable": true,
+        "cmakeExe": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\cmake.exe",
+        "minimumCmakeVersion": "3.18.1",
+        "ninjaExe": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\ninja.exe"
+      },
+      "stlSharedObjectMap": {
+        "LIBCXX_SHARED": {
+          "ARMEABI_V7A": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\arm-linux-androideabi\\libc++_shared.so",
+          "ARM64_V8A": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\aarch64-linux-android\\libc++_shared.so",
+          "X86": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\i686-linux-android\\libc++_shared.so",
+          "X86_64": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\sysroot\\usr\\lib\\x86_64-linux-android\\libc++_shared.so"
+        },
+        "LIBCXX_STATIC": {},
+        "NONE": {},
+        "SYSTEM": {}
+      },
+      "project": {
+        "rootBuildGradleFolder": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\android",
+        "sdkFolder": "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk",
+        "isBuildOnlyTargetAbiEnabled": true,
+        "isCmakeBuildCohabitationEnabled": false,
+        "isPrefabEnabled": false
+      },
+      "outputOptions": []
+    },
+    "prefabClassPathFileCollection": [],
+    "prefabPackageDirectoryListFileCollection": [],
+    "stlType": "c++_static",
+    "optimizationTag": "Debug"
+  },
+  "buildSettings": {
+    "environmentVariables": []
+  },
+  "prefabFolder": "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\.cxx\\Debug\\2e6p341c\\prefab\\armeabi-v7a",
+  "isActiveAbi": true,
+  "fullConfigurationHash": "2e6p341co5x442y6z4s5a3b171r1l4m3e571756f6e3y2m3s38166m2d3k4g2a",
+  "configurationArguments": [
+    "-HC:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android",
+    "-DCMAKE_SYSTEM_NAME\u003dAndroid",
+    "-DCMAKE_EXPORT_COMPILE_COMMANDS\u003dON",
+    "-DCMAKE_SYSTEM_VERSION\u003d19",
+    "-DANDROID_PLATFORM\u003dandroid-19",
+    "-DANDROID_ABI\u003darmeabi-v7a",
+    "-DCMAKE_ANDROID_ARCH_ABI\u003darmeabi-v7a",
+    "-DANDROID_NDK\u003dC:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393",
+    "-DCMAKE_ANDROID_NDK\u003dC:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393",
+    "-DCMAKE_TOOLCHAIN_FILE\u003dC:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\ndk\\25.1.8937393\\build\\cmake\\android.toolchain.cmake",
+    "-DCMAKE_MAKE_PROGRAM\u003dC:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\ninja.exe",
+    "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY\u003dC:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cxx\\Debug\\2e6p341c\\obj\\armeabi-v7a",
+    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY\u003dC:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cxx\\Debug\\2e6p341c\\obj\\armeabi-v7a",
+    "-DCMAKE_BUILD_TYPE\u003dDebug",
+    "-BC:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\.cxx\\Debug\\2e6p341c\\armeabi-v7a",
+    "-GNinja"
+  ]
+}

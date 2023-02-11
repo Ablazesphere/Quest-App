@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:quest_server/core/service/database.service.dart';
+import 'package:quest_server/meta/views/homescreen/homescreen.view.dart';
 
 import '../../custom_rect_tween.dart';
 import '../routes/hero_dialog.routes.dart';
@@ -7,7 +9,7 @@ import '../routes/hero_dialog.routes.dart';
 /// {@template add_todo_button}
 /// Button to add a new [Todo].
 ///
-/// Opens a [HeroDialogRoute] of [_AddTodoPopupCard].
+/// Opens a [HeroDialogRoute] of [AddTodoPopupCard].
 ///
 /// Uses a [Hero] with tag [_heroAddTodo].
 /// {@endtemplate}
@@ -22,7 +24,7 @@ class AddTodoButton extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.of(context).push(HeroDialogRoute(builder: (context) {
-            return const _AddTodoPopupCard();
+            return AddTodoPopupCard();
           }));
         },
         child: Hero(
@@ -55,11 +57,13 @@ const String _heroAddTodo = 'add-todo-hero';
 ///
 /// Uses a [Hero] with tag [_heroAddTodo].
 /// {@endtemplate}
-class _AddTodoPopupCard extends StatelessWidget {
+class AddTodoPopupCard extends StatelessWidget {
   /// {@macro add_todo_popup_card}
-  const _AddTodoPopupCard({Key? key}) : super(key: key);
+  AddTodoPopupCard({Key? key}) : super(key: key);
 
   @override
+  final titleController = TextEditingController();
+  final descrController = TextEditingController();
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
@@ -79,7 +83,7 @@ class _AddTodoPopupCard extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.7,
               width: MediaQuery.of(context).size.width * 0.9,
               child: SingleChildScrollView(
-                  physics: ClampingScrollPhysics(),
+                  physics: const ClampingScrollPhysics(),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   child: Column(
@@ -110,13 +114,14 @@ class _AddTodoPopupCard extends StatelessWidget {
                               ),
                             ),
                           )),
-                      const Padding(
-                        padding: EdgeInsets.only(
+                      Padding(
+                        padding: const EdgeInsets.only(
                             top: 15, bottom: 10, left: 10, right: 10),
                         child: TextField(
-                          style: TextStyle(
+                          controller: titleController,
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 22),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               hintText: 'Click to add title',
                               border: InputBorder.none,
                               counterText: ""),
@@ -131,13 +136,14 @@ class _AddTodoPopupCard extends StatelessWidget {
                         color: Colors.white,
                         thickness: 0.2,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(
+                      Padding(
+                        padding: const EdgeInsets.only(
                             top: 15, bottom: 10, left: 10, right: 10),
                         child: TextField(
-                          style: TextStyle(
+                          controller: descrController,
+                          style: const TextStyle(
                               fontWeight: FontWeight.w300, fontSize: 14),
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             hintText: 'Click to add description',
                             border: InputBorder.none,
                           ),
@@ -158,8 +164,8 @@ class _AddTodoPopupCard extends StatelessWidget {
                           print("Upload script button pressed.");
                         },
                         child: Container(
-                            padding: EdgeInsets.only(left: 10),
-                            margin: EdgeInsets.only(right: 100),
+                            padding: const EdgeInsets.only(left: 10),
+                            margin: const EdgeInsets.only(right: 115),
                             height: 50,
                             child: Card(
                               elevation: 5,
@@ -177,15 +183,41 @@ class _AddTodoPopupCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 30),
                       GestureDetector(
-                        onTap: () {
-                          print("Submit button pressesd.");
+                        onTap: () async {
+                          try {
+                            await DatabaseService().addPost(
+                                title: titleController.text,
+                                description: descrController.text);
+                            var snackBarSucess = const SnackBar(
+                              content: Text(
+                                "Submit Sucess",
+                              ),
+                              backgroundColor: Colors.green,
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBarSucess);
+                            Navigator.of(context)
+                                .push(HeroDialogRoute(builder: (context) {
+                              return HomeView();
+                            }));
+                          } catch (e) {
+                            print(e);
+                            var snackBarFail = const SnackBar(
+                              content: Text(
+                                "Submit Failed",
+                              ),
+                              backgroundColor: Colors.red,
+                            );
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBarFail);
+                          }
                         },
                         child: Container(
                           alignment: Alignment.center,
                           width: MediaQuery.of(context).size.width * 0.9,
                           height: 50,
                           color: Colors.grey[800],
-                          child: Text(
+                          child: const Text(
                             'Submit.',
                             style: TextStyle(
                                 fontSize: 28, fontWeight: FontWeight.bold),
@@ -197,7 +229,7 @@ class _AddTodoPopupCard extends StatelessWidget {
                               )
                               .shimmer(
                                   color: Colors.blue,
-                                  duration: Duration(seconds: 3)),
+                                  duration: const Duration(seconds: 3)),
                         ),
                       )
                     ],

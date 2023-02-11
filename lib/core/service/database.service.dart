@@ -26,6 +26,19 @@ class DatabaseService {
     );
   }
 
+  Future<PostgrestResponse?> addPost(
+      {required String title, required String description}) async {
+    PostgrestResponse? response =
+        await Supabase.instance.client.from("posts").insert(
+      {
+        "user_id": user?.id,
+        "title": title,
+        "description": description,
+        "video": "007BD52B-0BAD-4ED1-BF8B-103AB727D01F.MOV"
+      },
+    );
+  }
+
   Future<String?> getAvatar() async {
     final String avatar = await Supabase.instance.client.storage
         .from("avatar")
@@ -43,6 +56,17 @@ class DatabaseService {
     final signedUrls = await Supabase.instance.client.storage
         .from("public-image")
         .createSignedUrls(fpath, 120);
+    return signedUrls;
+  }
+
+  Future<List> feedgetURLs() async {
+    final List<FileObject> path =
+        await Supabase.instance.client.storage.from("main-feed").list();
+    final List<String> fpath = path.map((e) => e.name).toList();
+    final signedUrls = await Supabase.instance.client.storage
+        .from("main-feed")
+        .createSignedUrls(fpath, 120);
+    print(signedUrls);
     return signedUrls;
   }
 }

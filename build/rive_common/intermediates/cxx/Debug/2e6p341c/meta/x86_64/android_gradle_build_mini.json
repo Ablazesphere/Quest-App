@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:/Users/M Shoaib/AppData/Local/Android/Sdk/cmake/3.18.1/bin/ninja.exe",
+      "-C",
+      "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\.cxx\\Debug\\2e6p341c\\x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Users\\M Shoaib\\AppData\\Local\\Android\\sdk\\cmake\\3.18.1\\bin\\ninja.exe",
+    "-C",
+    "C:\\Users\\M Shoaib\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\rive_common-0.0.1\\android\\.cxx\\Debug\\2e6p341c\\x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "rive_text::@6890427a1f51a3e7e1df": {
+      "artifactName": "rive_text",
+      "abi": "x86_64",
+      "output": "C:\\Users\\M Shoaib\\Desktop\\Quest-App\\build\\rive_common\\intermediates\\cxx\\Debug\\2e6p341c\\obj\\x86_64\\librive_text.so",
+      "runtimeFiles": []
+    }
+  }
+}

@@ -1,13 +1,10 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import 'package:quest_server/app/provider/app.provider..dart';
 import 'package:quest_server/app/routes/app.routes.dart';
 import 'package:quest_server/meta/views/authentication/login.view.dart';
-import 'package:quest_server/meta/views/homescreen/homescreen.view.dart';
-import 'package:quest_server/meta/views/navigation/navigation.view.dart';
-import 'package:quest_server/meta/views/profile/dashboard.view.dart';
+
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 void main() async {
@@ -49,9 +46,9 @@ class Quest extends StatelessWidget {
           ),
         ),
         splashTransition: SplashTransition.fadeTransition,
-        backgroundColor: Color.fromRGBO(73, 148, 236, 1),
+        backgroundColor: const Color.fromRGBO(73, 148, 236, 1),
         screenFunction: () async {
-          return LoginView();
+          return const LoginView();
         },
       ),
     );

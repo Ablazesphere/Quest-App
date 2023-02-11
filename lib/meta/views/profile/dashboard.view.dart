@@ -112,7 +112,7 @@ class _ProfileViewState extends State<ProfileView> {
                   ),
                 ),
               ),
-              const SizedBox(height: 23),
+              const SizedBox(height: 12),
               FutureBuilder<String?>(
                   future: id,
                   builder: (context, snapshot) {
@@ -180,7 +180,8 @@ class _ProfileViewState extends State<ProfileView> {
                                     ContainerTransitionType.fadeThrough,
                                 closedBuilder: ((context, action) {
                                   return SizedBox(
-                                    height: 300,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.35,
                                     child: Card(
                                       color: Colors.blueGrey,
                                       semanticContainer: true,
